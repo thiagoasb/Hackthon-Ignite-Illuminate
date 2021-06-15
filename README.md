@@ -1,1 +1,1 @@
-# HackthonIgnite-Ignite-Illuminate
+# Hackthon-Ignite-Illuminate
