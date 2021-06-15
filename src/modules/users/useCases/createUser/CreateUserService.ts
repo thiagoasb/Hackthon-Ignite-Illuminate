@@ -1,5 +1,6 @@
-import { IUserRepository } from 'src/modules/users/repositories/IUserRepository';
 import { inject, injectable } from "tsyringe";
+import { AppError } from './../../../../errors/AppError';
+import { IUserRepository } from 'src/modules/users/repositories/IUserRepository';
 
 interface IRequest {
   name: string;
@@ -24,7 +25,7 @@ class CreateUserService {
     const emailAlreadyExists = await this.userRepository.findByEmail(email);
 
     if (emailAlreadyExists) {
-      throw new Error("This email is already in use! Login to access your account.");
+      throw new AppError("This email is already in use! Login to access your account.");
     }
 
     this.userRepository.create({
