@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateUser1623783536337 implements MigrationInterface {
+export class CreateCards1623868166394 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "users",
+                name: "cards",
                 columns: [
                     {
                         name: "id",
@@ -12,20 +12,20 @@ export class CreateUser1623783536337 implements MigrationInterface {
                         isPrimary: true,
                     },
                     {
-                        name: "name",
+                        name: "user_id",
+                        type: "uuid",
+                    },
+                    {
+                        name: "bank",
                         type: "varchar",
                     },
                     {
-                        name: "email",
+                        name: "flag",
                         type: "varchar",
                     },
                     {
-                        name: "password",
-                        type: "varchar",
-                    },
-                    {
-                        name: "birthday",
-                        type: "timestamp",
+                        name: "is_used",
+                        type: "boolean",
                     },
                     {
                         name: "created_at",
@@ -38,11 +38,21 @@ export class CreateUser1623783536337 implements MigrationInterface {
                         default: "now()",
                     },
                 ],
+                foreignKeys: [
+                    {
+                        name: "FKUserCard",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL",
+                    },
+                ],
             })
         );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("user");
+        await queryRunner.dropTable("cards");
     }
 }
