@@ -1,28 +1,30 @@
 import {
     Column,
     Entity,
+    PrimaryColumn,
     CreateDateColumn,
     UpdateDateColumn,
-    PrimaryColumn,
+    ManyToOne,
+    JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity("user")
-class User {
+import { User } from "./User";
+
+@Entity()
+class Card {
     @PrimaryColumn()
     id?: string;
 
-    @Column()
-    name: string;
+    @ManyToOne(() => User)
+    @JoinColumn({ name: "user_id" })
+    user_id: string;
 
     @Column()
-    email: string;
+    bank: string;
 
     @Column()
-    password: string;
-
-    @Column()
-    birthday: Date;
+    is_used: boolean;
 
     @CreateDateColumn()
     created_at: Date;
@@ -37,4 +39,4 @@ class User {
     }
 }
 
-export { User };
+export default { Card };
