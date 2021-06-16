@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../../errors/AppError";
@@ -25,19 +26,18 @@ class CreateUserService {
     }: IRequest): Promise<void> {
         const emailAlreadyExists = await this.userRepository.findByEmail(email);
 
-        if (emailAlreadyExists) {
-            throw new AppError(
-                "This email is already in use! Login to access your account."
-            );
-        }
-
-        this.userRepository.create({
-            name,
-            email,
-            password,
-            birthday,
-        });
+    if (emailAlreadyExists) {
+      throw new AppError("This email is already in use! Login to access your account.");
     }
+    const passwordHash = await hash(password, 10);
+
+    this.userRepository.create({
+      name,
+      email,
+      password: passwordHash,
+      birthday
+    });
+  }
 }
 
 export { CreateUserService };
