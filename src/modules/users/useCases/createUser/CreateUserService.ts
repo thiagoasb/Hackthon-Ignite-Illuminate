@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
+
 import { AppError } from './../../../../errors/AppError';
-import { IUserRepository } from 'src/modules/users/repositories/IUserRepository';
+import { IUserRepository } from '../../repositories/IUserRepository';
 
 interface IRequest {
   name: string;

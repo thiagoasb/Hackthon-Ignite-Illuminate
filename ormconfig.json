@@ -1,0 +1,19 @@
+{
+  "type": "postgres",
+  "port": 5432,
+  "host": "localhost",
+  "username": "docker",
+  "password": "docker",
+  "database": "illuminate_db",
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "entities": [
+    "./src/modules/cards/entities/*.ts",
+    "./src/modules/incidents/entities/*.ts",
+    "./src/modules/users/entities/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
+}

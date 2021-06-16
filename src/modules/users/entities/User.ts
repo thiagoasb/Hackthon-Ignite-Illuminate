@@ -1,12 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
 @Entity("user")
 class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id?: string;
 
-  @Column()
+  @Column() 
   name: string;
 
   @Column()
