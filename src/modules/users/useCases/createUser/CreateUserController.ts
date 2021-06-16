@@ -4,20 +4,20 @@ import { container } from "tsyringe";
 import { CreateUserService } from "./CreateUserService";
 
 class CreateUserController {
-  async handle(request: Request, response: Response): Promise<Response> {
-    const { name, email, password, birthday } = request.body;
+    async handle(request: Request, response: Response): Promise<Response> {
+        const { name, email, password, birthday } = request.body;
 
-    const createUserService = container.resolve(CreateUserService);
+        const createUserService = container.resolve(CreateUserService);
 
-    await createUserService.execute({
-      name,
-      email,
-      password, 
-      birthday,
-    });
+        await createUserService.execute({
+            name,
+            email,
+            password,
+            birthday,
+        });
 
-    return response.status(201).send();
-  }
+        return response.status(201).send();
+    }
 }
 
 export { CreateUserController };
