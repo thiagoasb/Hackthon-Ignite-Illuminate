@@ -1,3 +1,4 @@
+import { parseISO } from "date-fns";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
@@ -9,11 +10,13 @@ class CreateUserController {
 
         const createUserService = container.resolve(CreateUserService);
 
+        const parsedBirthday = parseISO(birthday);
+
         await createUserService.execute({
             name,
             email,
             password,
-            birthday,
+            birthday: parsedBirthday,
         });
 
         return response.status(201).send();
