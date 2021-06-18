@@ -9,19 +9,25 @@ import {
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-import { User } from "./User";
+import { User } from "../../users/entities/User";
 
-@Entity()
+@Entity("cards")
 class Card {
     @PrimaryColumn()
     id?: string;
 
     @ManyToOne(() => User)
     @JoinColumn({ name: "user_id" })
+    user: User;
+
+    @Column()
     user_id: string;
 
     @Column()
     bank: string;
+
+    @Column()
+    flag: string;
 
     @Column()
     is_used: boolean;
@@ -39,4 +45,4 @@ class Card {
     }
 }
 
-export default { Card };
+export { Card };
