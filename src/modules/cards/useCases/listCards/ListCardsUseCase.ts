@@ -10,8 +10,8 @@ class ListCardsUseCase {
         private cardRepository: CardRepository
     ) {}
 
-    async execute(): Promise<Card[]> {
-        const cards = await this.cardRepository.list();
+    async execute(user_id: string): Promise<Card[]> {
+        const cards = await this.cardRepository.findByUserId(user_id);
 
         return cards;
     }

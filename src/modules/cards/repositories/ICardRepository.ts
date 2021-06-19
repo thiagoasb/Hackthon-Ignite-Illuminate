@@ -11,6 +11,7 @@ interface ICreateCardDTO {
 interface ICardRepository {
     create({ user_id, bank, flag, is_used }: ICreateCardDTO): Promise<void>;
     list(): Promise<Card[]>;
+    findByUserId(user_id: string): Promise<Card[]>;
     findById(id: string): Promise<Card>;
 }
 
