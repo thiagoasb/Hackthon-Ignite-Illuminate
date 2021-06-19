@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
-import { Card } from "../../entities/Card";
-import { CardRepository } from "../../repositories/implements/CardRepository";
+import { Card } from "../../infra/typeorm/entities/Card";
+import { CardRepository } from "../../infra/typeorm/repositories/implements/CardRepository";
 
 @injectable()
 class ListCardsUseCase {

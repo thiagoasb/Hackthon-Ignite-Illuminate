@@ -20,11 +20,7 @@ export class CreateIncident1623870063426 implements MigrationInterface {
                         type: "numeric",
                     },
                     {
-                        name: "local",
-                        type: "varchar",
-                    },
-                    {
-                        name: "place",
+                        name: "place_name",
                         type: "varchar",
                     },
                     {
@@ -40,7 +36,7 @@ export class CreateIncident1623870063426 implements MigrationInterface {
                         type: "varchar",
                     },
                     {
-                        name: "uf",
+                        name: "state",
                         type: "varchar",
                     },
                     {
@@ -50,6 +46,10 @@ export class CreateIncident1623870063426 implements MigrationInterface {
                     {
                         name: "is_online",
                         type: "boolean",
+                    },
+                    {
+                        name: "service_name",
+                        type: "varchar",
                     },
                     {
                         name: "note",

@@ -6,14 +6,12 @@
   "password": "docker",
   "database": "illuminate_db",
   "migrations": [
-    "./src/database/migrations/*.ts"
+    "./src/shared/infra/typeorm/migrations/*.ts"
   ],
   "entities": [
-    "./src/modules/cards/entities/*.ts",
-    "./src/modules/incidents/entities/*.ts",
-    "./src/modules/users/entities/*.ts"
+    "./src/modules/**/infra/typeorm/entities/*.ts"
   ],
   "cli": {
-    "migrationsDir": "./src/database/migrations"
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
   }
 }

@@ -3,7 +3,7 @@ import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../../errors/AppError";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { IUserRepository } from "../../infra/typeorm/repositories/IUserRepository";
 
 interface IRequest {
     email: string;
@@ -12,6 +12,7 @@ interface IRequest {
 
 interface IResponse {
     user: {
+        id: string;
         name: string;
         email: string;
     };
@@ -19,7 +20,7 @@ interface IResponse {
 }
 
 @injectable()
-class AuthenticateUserService {
+class AuthenticateUserUseCase {
     constructor(
         @inject("UserRepository")
         private userRepository: IUserRepository
@@ -45,6 +46,7 @@ class AuthenticateUserService {
 
         const tokenReturn: IResponse = {
             user: {
+                id: userLogin.id,
                 name: userLogin.name,
                 email: userLogin.email,
             },
@@ -55,4 +57,4 @@ class AuthenticateUserService {
     }
 }
 
-export { AuthenticateUserService };
+export { AuthenticateUserUseCase };

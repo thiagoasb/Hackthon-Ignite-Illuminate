@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { CardRepository } from "../../repositories/implements/CardRepository";
+import { CardRepository } from "../../infra/typeorm/repositories/implements/CardRepository";
 
 interface IRequest {
     bank?: string;

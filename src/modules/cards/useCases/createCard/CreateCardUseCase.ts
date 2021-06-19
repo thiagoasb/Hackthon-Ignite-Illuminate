@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { ICardRepository } from "../../repositories/ICardRepository";
+import { ICardRepository } from "../../infra/typeorm/repositories/ICardRepository";
 
 interface IRequest {
     user_id: string;

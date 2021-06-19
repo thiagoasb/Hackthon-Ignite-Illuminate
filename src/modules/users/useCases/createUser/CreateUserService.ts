@@ -5,7 +5,7 @@ import differenceInYears from "date-fns/differenceInCalendarDays";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../../errors/AppError";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { IUserRepository } from "../../infra/typeorm/repositories/IUserRepository";
 
 interface IRequest {
     name: string;
