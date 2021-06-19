@@ -1,5 +1,5 @@
 /* eslint-disable import/no-duplicates */
-import { hash } from "bcrypt";
+import { hash } from "bcryptjs";
 import { startOfDay } from "date-fns";
 import differenceInYears from "date-fns/differenceInCalendarDays";
 import { inject, injectable } from "tsyringe";
