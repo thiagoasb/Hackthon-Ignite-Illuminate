@@ -13,6 +13,7 @@ interface IUserRepository {
     findById(id: string): Promise<User>;
     list(): Promise<User[]>;
     save(user: User): Promise<User>;
+    delete(id: string): Promise<void>;
 }
 
 export { IUserRepository, ICreateUserDTO };

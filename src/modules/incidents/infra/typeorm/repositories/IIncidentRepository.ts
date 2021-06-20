@@ -36,6 +36,7 @@ interface IIncidentRepository {
     findById(id: string): Promise<Incident>;
     list(): Promise<Incident[]>;
     save(incident: Incident): Promise<Incident>;
+    delete(id: string): Promise<void>;
 }
 
 export { IIncidentRepository, ICreateIncidentDTO };

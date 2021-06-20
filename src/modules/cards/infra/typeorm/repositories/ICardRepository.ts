@@ -14,6 +14,7 @@ interface ICardRepository {
     findByUserId(user_id: string): Promise<Card[]>;
     findById(id: string): Promise<Card>;
     save(card: Card): Promise<Card>;
+    delete(id: string): Promise<void>;
 }
 
 export { ICardRepository, ICreateCardDTO };

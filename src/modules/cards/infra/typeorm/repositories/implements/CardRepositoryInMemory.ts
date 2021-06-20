@@ -38,6 +38,9 @@ class CardRepositoryInMemory implements ICardRepository {
     save(card: Card): Promise<Card> {
         throw new Error("Method not implemented.");
     }
+    delete(id: string): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
 }
 
 export { CardRepositoryInMemory };

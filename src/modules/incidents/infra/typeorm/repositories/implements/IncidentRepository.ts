@@ -71,6 +71,10 @@ class IncidentRepository implements IIncidentRepository {
     async save(incident: Incident): Promise<Incident> {
         return this.repositoryORM.save(incident);
     }
+
+    async delete(id: string): Promise<void> {
+        await this.repositoryORM.delete(id);
+    }
 }
 
 export { IncidentRepository };

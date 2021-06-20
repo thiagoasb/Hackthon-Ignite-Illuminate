@@ -51,6 +51,10 @@ class CardRepository implements ICardRepository {
     async save(card: Card): Promise<Card> {
         return this.repository.save(card);
     }
+
+    async delete(id: string): Promise<void> {
+        await this.repository.delete(id);
+    }
 }
 
 export { CardRepository };

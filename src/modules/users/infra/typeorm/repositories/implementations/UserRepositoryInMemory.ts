@@ -37,6 +37,9 @@ class UserRepositoryInMemory implements IUserRepository {
     save(user: User): Promise<User> {
         throw new Error("Method not implemented.");
     }
+    delete(id: string): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
 }
 
 export { UserRepositoryInMemory };
