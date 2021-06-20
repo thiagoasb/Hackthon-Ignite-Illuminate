@@ -34,6 +34,8 @@ interface IIncidentRepository {
     }: ICreateIncidentDTO): Promise<void>;
     findByCardId(card_id: string): Promise<Incident[]>;
     findById(id: string): Promise<Incident>;
+    findByPlaceName(place_name: string): Promise<Incident[]>;
+    findByServiceName(service_name: string): Promise<Incident[]>;
     list(): Promise<Incident[]>;
     save(incident: Incident): Promise<Incident>;
 }

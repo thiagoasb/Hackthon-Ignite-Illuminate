@@ -7,7 +7,6 @@ class UpdateCardController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
         const { bank, flag, is_used } = request.body;
-        console.log("controller => id : ", id);
 
         const updateCardUseCase = container.resolve(UpdateCardUseCase);
 

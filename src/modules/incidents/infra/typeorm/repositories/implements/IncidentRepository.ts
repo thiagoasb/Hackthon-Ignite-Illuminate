@@ -1,4 +1,4 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, ILike, Repository } from "typeorm";
 
 import { Incident } from "../../entities/Incident";
 import {
@@ -60,6 +60,22 @@ class IncidentRepository implements IIncidentRepository {
 
     async findById(id: string): Promise<Incident> {
         const incident = this.repositoryORM.findOne(id);
+        return incident;
+    }
+
+    async findByPlaceName(place_name: string): Promise<Incident[]> {
+        const incident = this.repositoryORM.find({
+            where: { place_name: ILike(`%${place_name}%`) },
+        });
+
+        return incident;
+    }
+
+    async findByServiceName(service_name: string): Promise<Incident[]> {
+        const incident = this.repositoryORM.find({
+            where: { service_name: ILike(`%${service_name}%`) },
+        });
+
         return incident;
     }
 

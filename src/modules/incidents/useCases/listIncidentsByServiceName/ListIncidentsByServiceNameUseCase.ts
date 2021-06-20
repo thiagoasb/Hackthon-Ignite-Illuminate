@@ -4,16 +4,18 @@ import { Incident } from "../../infra/typeorm/entities/Incident";
 import { IIncidentRepository } from "../../infra/typeorm/repositories/IIncidentRepository";
 
 @injectable()
-class ListIncidentsUseCase {
+class ListIncidentsByServiceNameUseCase {
     constructor(
         @inject("IncidentRepository")
         private incidentRepository: IIncidentRepository
     ) {}
-    async execute(card_id: string): Promise<Incident[]> {
-        const incidents = await this.incidentRepository.findByCardId(card_id);
+    async execute(service_name: string): Promise<Incident[]> {
+        const incidents = await this.incidentRepository.findByServiceName(
+            service_name
+        );
 
         return incidents;
     }
 }
 
-export { ListIncidentsUseCase };
+export { ListIncidentsByServiceNameUseCase };
