@@ -14,7 +14,7 @@ const deleteIncidentsController = new DeleteUserController();
 
 incidentRoutes.post("/", createIncidentController.handle);
 incidentRoutes.get("/:card_id", listIncidentsController.handle);
-incidentRoutes.put("/:card_id", updateIncidentsController.handle);
+incidentRoutes.put("/:id", updateIncidentsController.handle);
 incidentRoutes.delete("/:id", deleteIncidentsController.handle);
 
 export { incidentRoutes };

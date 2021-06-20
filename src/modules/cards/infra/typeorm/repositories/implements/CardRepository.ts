@@ -48,6 +48,7 @@ class CardRepository implements ICardRepository {
 
         return card;
     }
+
     async save(card: Card): Promise<Card> {
         return this.repository.save(card);
     }

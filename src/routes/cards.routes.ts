@@ -14,7 +14,7 @@ const cardsRoutes = Router();
 
 cardsRoutes.post("/", createCardController.handle);
 cardsRoutes.get("/:user_id", listCardController.handle);
-cardsRoutes.put("/:user_id", updateCardController.handle);
 cardsRoutes.delete("/:id", deleteCardController.handle);
+cardsRoutes.put("/:id", updateCardController.handle);
 
 export { cardsRoutes };
