@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { IIncidentRepository } from "../../infra/typeorm/repositories/IIncidentRepository";
 
 interface IRequest {
+    id: string;
     card_id: string;
     value: string;
     time: Date;
@@ -27,6 +28,7 @@ class UpdateIncidentUseCase {
     ) {}
 
     async execute({
+        id,
         card_id,
         value,
         time,
@@ -41,7 +43,11 @@ class UpdateIncidentUseCase {
         note,
         date,
     }: IRequest): Promise<void> {
-        const incident = await this.incidentRepository.findById(card_id);
+        const incident = await this.incidentRepository.findById(id);
+
+        if (card_id) {
+            incident.card_id = card_id;
+        }
 
         if (value) {
             incident.value = value;
@@ -91,7 +97,7 @@ class UpdateIncidentUseCase {
             incident.date = date;
         }
 
-        await this.incidentRepository.create(incident);
+        await this.incidentRepository.save(incident);
     }
 }
 

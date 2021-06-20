@@ -1,3 +1,4 @@
+import { Card } from "@modules/cards/infra/typeorm/entities/Card";
 import { inject, injectable } from "tsyringe";
 
 import { ICardRepository } from "../../infra/typeorm/repositories/ICardRepository";
@@ -16,13 +17,15 @@ class CreateCardUseCase {
         private cardRepository: ICardRepository
     ) {}
 
-    async execute({ user_id, bank, is_used, flag }: IRequest): Promise<void> {
-        await this.cardRepository.create({
+    async execute({ user_id, bank, is_used, flag }: IRequest): Promise<Card> {
+        const card = await this.cardRepository.create({
             user_id,
             bank,
             flag,
             is_used,
         });
+
+        return card;
     }
 }
 

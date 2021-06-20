@@ -1,8 +1,8 @@
 import { Router } from "express";
 
 import { CreateIncidentController } from "../modules/incidents/useCases/createIncident/CreateIncidentController";
-import { UpdateIncidentController } from "../modules/incidents/useCases/updateIncident/UpdateIncidentController";
 import { ListIncidentsController } from "../modules/incidents/useCases/listIncidents/ListIncidentsController";
+import { UpdateIncidentController } from "../modules/incidents/useCases/updateIncident/UpdateIncidentController";
 
 const incidentRoutes = Router();
 

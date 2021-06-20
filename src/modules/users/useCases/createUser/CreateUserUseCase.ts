@@ -1,3 +1,4 @@
+import { User } from "@modules/users/infra/typeorm/entities/User";
 /* eslint-disable import/no-duplicates */
 import { hash } from "bcryptjs";
 import { startOfDay } from "date-fns";
@@ -15,7 +16,7 @@ interface IRequest {
 }
 
 @injectable()
-class CreateUserService {
+class CreateUserUseCase {
     constructor(
         @inject("UserRepository")
         private userRepository: IUserRepository
@@ -26,7 +27,7 @@ class CreateUserService {
         email,
         password,
         birthday,
-    }: IRequest): Promise<void> {
+    }: IRequest): Promise<User> {
         const emailAlreadyExists = await this.userRepository.findByEmail(email);
 
         if (emailAlreadyExists) {
@@ -43,19 +44,21 @@ class CreateUserService {
 
         if (age < 18) {
             throw new AppError(
-                "You must be at least 18 years older to create an account"
+                "You must be at least 18 years older to create an account."
             );
         }
 
         const passwordHash = await hash(password, 10);
 
-        this.userRepository.create({
+        const user = this.userRepository.create({
             name,
             email,
             password: passwordHash,
             birthday,
         });
+
+        return user;
     }
 }
 
-export { CreateUserService };
+export { CreateUserUseCase };

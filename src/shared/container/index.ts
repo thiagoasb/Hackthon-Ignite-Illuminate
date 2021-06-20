@@ -1,5 +1,7 @@
 import { container } from "tsyringe";
 
+import "@shared/providers";
+
 import { ICardRepository } from "../../modules/cards/infra/typeorm/repositories/ICardRepository";
 import { CardRepository } from "../../modules/cards/infra/typeorm/repositories/implements/CardRepository";
 import { IIncidentRepository } from "../../modules/incidents/infra/typeorm/repositories/IIncidentRepository";

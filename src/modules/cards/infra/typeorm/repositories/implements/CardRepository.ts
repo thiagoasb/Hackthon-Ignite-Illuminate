@@ -15,7 +15,7 @@ class CardRepository implements ICardRepository {
         bank,
         flag,
         is_used,
-    }: ICreateCardDTO): Promise<void> {
+    }: ICreateCardDTO): Promise<Card> {
         const card = this.repository.create({
             user_id,
             bank,
@@ -24,6 +24,8 @@ class CardRepository implements ICardRepository {
         });
 
         await this.repository.save(card);
+
+        return card;
     }
 
     async list(): Promise<Card[]> {
@@ -45,6 +47,9 @@ class CardRepository implements ICardRepository {
         const card = await this.repository.findOne(id);
 
         return card;
+    }
+    async save(card: Card): Promise<Card> {
+        return this.repository.save(card);
     }
 }
 
