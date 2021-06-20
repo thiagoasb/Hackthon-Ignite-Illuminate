@@ -2,17 +2,17 @@ import { parseISO } from "date-fns";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateUserService } from "./CreateUserService";
+import { CreateUserUseCase } from "./CreateUserUseCase";
 
 class CreateUserController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { name, email, password, birthday } = request.body;
 
-        const createUserService = container.resolve(CreateUserService);
+        const createUserUseCase = container.resolve(CreateUserUseCase);
 
         const parsedBirthday = parseISO(birthday);
 
-        await createUserService.execute({
+        await createUserUseCase.execute({
             name,
             email,
             password,

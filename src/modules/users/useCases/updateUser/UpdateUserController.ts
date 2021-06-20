@@ -8,6 +8,8 @@ class UpdateUserController {
         const { id } = request.params;
         const { name, email, password, birthday } = request.body;
 
+        const { name, email, password, birthday } = request.body;
+
         const updateUserUseCase = container.resolve(UpdateUserUseCase);
 
         await updateUserUseCase.execute({
