@@ -5,6 +5,9 @@ import { UpdateIncidentUseCase } from "./UpdateIncidentUseCase";
 
 class UpdateIncidentController {
     async handle(request: Request, response: Response): Promise<Response> {
+        const { id } = request.params;
+        console.log("controller => id : ", id);
+
         const {
             card_id,
             value,
@@ -24,6 +27,7 @@ class UpdateIncidentController {
         const updateIncidentUseCase = container.resolve(UpdateIncidentUseCase);
 
         await updateIncidentUseCase.execute({
+            id,
             card_id,
             value,
             time,

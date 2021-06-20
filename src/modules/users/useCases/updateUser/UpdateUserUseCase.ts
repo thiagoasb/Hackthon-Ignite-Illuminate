@@ -42,7 +42,7 @@ class UpdateUserUseCase {
             user.birthday = birthday;
         }
 
-        await this.userRepository.create(user);
+        await this.userRepository.save(user);
     }
 }
 

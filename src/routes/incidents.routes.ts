@@ -12,6 +12,6 @@ const updateIncidentsController = new UpdateIncidentController();
 
 incidentRoutes.post("/", createIncidentController.handle);
 incidentRoutes.get("/:card_id", listIncidentsController.handle);
-incidentRoutes.put("/:card_id", updateIncidentsController.handle);
+incidentRoutes.put("/:id", updateIncidentsController.handle);
 
 export { incidentRoutes };

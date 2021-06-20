@@ -28,7 +28,6 @@ class IncidentRepository implements IIncidentRepository {
         note,
         date,
     }: ICreateIncidentDTO): Promise<void> {
-        console.log("incidentRepository -> Create() => : ", card_id);
         const novoqrcode = "hauhauhauua";
         const incident = this.repositoryORM.create({
             card_id,
@@ -51,18 +50,26 @@ class IncidentRepository implements IIncidentRepository {
     }
 
     async findByCardId(card_id: string): Promise<Incident[]> {
-        console.log("findCardById -> id : ", card_id);
         const incidentCard = this.repositoryORM.find({
             where: { card_id },
             relations: ["card"],
         });
-        console.log("findCardById -> incidentCard : ", incidentCard);
+
         return incidentCard;
+    }
+
+    async findById(id: string): Promise<Incident> {
+        const incident = this.repositoryORM.findOne(id);
+        return incident;
     }
 
     async list(): Promise<Incident[]> {
         const incidentList = this.repositoryORM.find();
         return incidentList;
+    }
+
+    async save(incident: Incident): Promise<Incident> {
+        return this.repositoryORM.save(incident);
     }
 }
 

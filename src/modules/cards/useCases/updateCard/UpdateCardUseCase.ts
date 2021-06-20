@@ -17,7 +17,10 @@ class UpdateCardUseCase {
     ) {}
 
     async execute({ id, bank, flag, is_used }: IRequest): Promise<void> {
+        console.log("service => id : ", id);
+        console.log("service => bank : ", bank);
         const card = await this.cardRepository.findById(id);
+        console.log("service => card : ", card);
 
         if (bank) {
             card.bank = bank;
@@ -31,7 +34,10 @@ class UpdateCardUseCase {
             card.is_used = is_used;
         }
 
-        await this.cardRepository.create(card);
+        console.log("service => id : ", id);
+        console.log("service => bank : ", bank);
+        console.log("service => card : ", card);
+        await this.cardRepository.save(card);
     }
 }
 

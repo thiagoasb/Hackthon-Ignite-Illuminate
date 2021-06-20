@@ -40,6 +40,10 @@ class UserRepository implements IUserRepository {
         const userList = await this.repositoryORM.find();
         return userList;
     }
+
+    async save(user: User): Promise<User> {
+        return this.repositoryORM.save(user);
+    }
 }
 
 export { UserRepository };

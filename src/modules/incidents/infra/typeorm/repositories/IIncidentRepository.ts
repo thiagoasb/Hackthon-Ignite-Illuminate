@@ -35,6 +35,7 @@ interface IIncidentRepository {
     findByCardId(card_id: string): Promise<Incident[]>;
     findById(id: string): Promise<Incident>;
     list(): Promise<Incident[]>;
+    save(incident: Incident): Promise<Incident>;
 }
 
 export { IIncidentRepository, ICreateIncidentDTO };

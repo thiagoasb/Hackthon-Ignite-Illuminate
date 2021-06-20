@@ -13,6 +13,7 @@ interface ICardRepository {
     list(): Promise<Card[]>;
     findByUserId(user_id: string): Promise<Card[]>;
     findById(id: string): Promise<Card>;
+    save(card: Card): Promise<Card>;
 }
 
 export { ICardRepository, ICreateCardDTO };
