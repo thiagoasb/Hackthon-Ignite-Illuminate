@@ -1,4 +1,4 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, ILike, Repository } from "typeorm";
 
 import { User } from "../../entities/User";
 import { IUserRepository, ICreateUserDTO } from "../IUserRepository";
@@ -36,6 +36,14 @@ class UserRepository implements IUserRepository {
     async findById(id: string): Promise<User> {
         const user = await this.repositoryORM.findOne({ id });
         return user;
+    }
+
+    async listById(id: string): Promise<User[]> {
+        const listUserByid = await this.repositoryORM.find({
+            where: { id },
+        });
+
+        return listUserByid;
     }
 
     async list(): Promise<User[]> {
